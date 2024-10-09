@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="input-group mb-3">
+                <input type="text" [(ngModel)]="employeeId" class="form-control" placeholder="Enter the employee ID">
+                <button (click)="searchEmployees()" class="btn btn-primary" id="searchButton">Search</button>
+            </div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Gender</th>
+                        <th>Salary</th>
+                        <th>Anual Salary</th>
+                    </tr>
+                </thead>
+                <div *ngIf="isLoading">Searching...</div>
+                <tbody id="searchResults" *ngIf="!isLoading">
+                        <tr *ngFor="let employee of employeesArray">
+                            <td>{{employee.id}}</td>
+                            <td>{{employee.name}}</td>
+                            <td>{{employee.gender}}</td>
+                            <td>{{employee.salary | currency}}</td>
+                            <td>{{employee.anualSalary | currency}}</td>
+                        </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+  </div>
